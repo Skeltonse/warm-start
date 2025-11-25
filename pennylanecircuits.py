@@ -229,18 +229,18 @@ def PARAMETERIZED_STATE_PREP(systq, Ns):
     for k in range(Ns):
         ###call ep^2
         plre.ResourceQFT(wires=range(systq), num_wires=systq)
-        for j in range(systq):
-            plre.ResourcePhaseShift(wires=[j])
-        for j in range(int(systq*(systq-1)/2)): ##extremly lasy strategy for the controlled phase gates
-            plre.ResourceControlledPhaseShift()
+        for k in range(systq):
+            plre.ResourcePhaseShift(wires=[k])
+           
+            for j in range(k+1, systq): 
+                plre.ResourceControlledPhaseShift(wires=[k, j])
         plre.ResourceQFT(num_wires=systq, wires=range(systq))
         
         ##call ex^2
         for k in range(systq):
-            plre.ResourcePhaseShift(wires=[k])
-        
-        for j in range(int(systq*(systq-1)/2)): ##extremly lazy strategy for the controlled phase gates
-            plre.ResourceControlledPhaseShift()
+            plre.ResourcePhaseShift(wires=[k]) 
+            for j in range(k+1, systq): 
+                plre.ResourceControlledPhaseShift(wires=[k, j])
 
         for l in range(systq):
             plre.ResourceRZ(wires=[l])
