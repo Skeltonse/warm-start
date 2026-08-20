@@ -2,6 +2,7 @@
 \starttikzpicture
 
 \definecolor{darkgray176}{RGB}{176,176,176}
+\definecolor{darkorange25512714}{RGB}{255,127,14}
 \definecolor{steelblue31119180}{RGB}{31,119,180}
 
 \startaxis[
@@ -9,23 +10,28 @@ tick align=outside,
 tick pos=left,
 x grid style={darkgray176},
 xlabel={Log of number of sites},
-xmin=4.75, xmax=10.25,
+xmin=16, xmax=1072,
 xtick style={color=black},
 y grid style={darkgray176},
 ylabel={T Count},
-ymin=-4556411.2, ymax=277662827.2,
-ytick style={color=black},
-ytick={-50000000,0,50000000,100000000,150000000,200000000,250000000,300000000},
-yticklabels={\ensuremath{-}0.5,0.0,0.5,1.0,1.5,2.0,2.5,3.0}
+ymin=16.4650355507322, ymax=19.5341201873375,
+ytick style={color=black}
 ]
 \addplot [semithick, steelblue31119180, mark=x, mark size=3, mark options={solid}]
 table {%
-5 8271736
-6 16547960
-7 33100408
-8 66205304
-9 132415096
-10 264834680
+64 16.62177338935
+128 17.3150561665553
+256 18.0082711385437
+512 18.7014522130945
+1024 19.3946163402191
+};
+\addplot [semithick, darkorange25512714, mark=x, mark size=3, mark options={solid}]
+table {%
+64 16.6045393978506
+128 17.2976865784105
+256 17.9908337589705
+512 18.6839809395304
+1024 19.3771281200904
 };
 \stopaxis
 
